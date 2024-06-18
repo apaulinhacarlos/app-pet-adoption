@@ -8,8 +8,8 @@ import {
 
 import sequelizeDatabase from '.';
 
-class Animal extends Model<InferAttributes<Animal>,
-InferCreationAttributes<Animal>> {
+class AnimalModelDatabase extends Model<InferAttributes<AnimalModelDatabase>,
+InferCreationAttributes<AnimalModelDatabase>> {
   declare id: CreationOptional<number>;
   declare name: CreationOptional<string>;
   declare specie: CreationOptional<string>;
@@ -19,7 +19,7 @@ InferCreationAttributes<Animal>> {
   declare isAdopted: CreationOptional<boolean>;
 }
 
-Animal.init({
+AnimalModelDatabase.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -65,4 +65,4 @@ Animal.init({
   underscored: true,
 });
 
-export default Animal;
+export default AnimalModelDatabase;

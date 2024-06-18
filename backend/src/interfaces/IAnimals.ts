@@ -2,7 +2,7 @@ interface IAnimals {
   id: number,
   name: string,
   specie: string,
-  genger: 'male' | 'female',
+  genger: string,
   yearOfBirth: number,
   availableForAdoption: boolean,
   isAdopted: boolean,

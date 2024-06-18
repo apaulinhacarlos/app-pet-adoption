@@ -1,10 +1,8 @@
 import * as express from 'express';
 import 'express-async-errors';
 
-// import loginRouter from './routes/loginRouter';
-// import matchRouter from './routes/matchRouter';
-// import teamRouter from './routes/teamRouter';
-// import leaderBoardRouter from './routes/leaderBoardRouter';
+import animalRouter from './routes/animal.router';
+
 // import errorMiddleware from './middlewares/errorMiddleware';
 
 class App {
@@ -24,10 +22,7 @@ class App {
   }
 
   private routes(): void {
-    // this.app.use('/login', loginRouter);
-    // this.app.use('/teams', teamRouter);
-    // this.app.use('/matches', matchRouter);
-    // this.app.use('/leaderboard', leaderBoardRouter);
+    this.app.use('/animals', animalRouter);
   }
 
   private config():void {
