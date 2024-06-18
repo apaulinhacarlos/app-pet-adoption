@@ -10,6 +10,12 @@ class AnimalsController {
     const animals = await this.service.get();
     return res.status(200).json(animals);
   }
+
+  public async getById(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const animal = await this.service.getById(Number(id));
+    return res.status(200).json(animal);
+  }
 }
 
 export default AnimalsController;
