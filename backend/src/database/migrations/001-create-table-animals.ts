@@ -18,7 +18,7 @@ export default {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      genger: {
+      gender: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -31,6 +31,19 @@ export default {
           min: 1990, // ano mínimo permitido
           max: new Date().getFullYear() // ano máximo é o ano atual
         }
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      image_url: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: 'image_url',
+      },
+      video_url: {
+        type: DataTypes.STRING,
+        field: 'video_url',
       },
       availableForAdoption: {
         type: DataTypes.BOOLEAN,

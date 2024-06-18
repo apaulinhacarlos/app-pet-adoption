@@ -13,8 +13,11 @@ InferCreationAttributes<AnimalModelDatabase>> {
   declare id: CreationOptional<number>;
   declare name: CreationOptional<string>;
   declare specie: CreationOptional<string>;
-  declare genger: CreationOptional<string>;
+  declare gender: CreationOptional<string>;
   declare yearOfBirth: CreationOptional<number>;
+  declare description: CreationOptional<string>;
+  declare imageUrl: CreationOptional<string>;
+  declare videoUrl: CreationOptional<string>;
   declare availableForAdoption: CreationOptional<boolean>;
   declare isAdopted: CreationOptional<boolean>;
 }
@@ -34,7 +37,7 @@ AnimalModelDatabase.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  genger: {
+  gender: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -47,6 +50,20 @@ AnimalModelDatabase.init({
       min: 1990,
       max: new Date().getFullYear(),
     },
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  imageUrl: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'image_url',
+  },
+  videoUrl: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'video_url',
   },
   availableForAdoption: {
     type: DataTypes.BOOLEAN,
