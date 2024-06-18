@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  // withCredentials: true, // Isso garante que as credenciais são enviadas junto com a requisição
+  withCredentials: true, // Isso garante que as credenciais são enviadas junto com a requisição
 });
 
 export const requestData = async (path: string) => {
