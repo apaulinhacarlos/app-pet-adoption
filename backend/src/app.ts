@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as cors from 'cors';
 import 'express-async-errors';
 
 import animalRouter from './routes/animal.router';
@@ -11,8 +12,8 @@ class App {
   constructor() {
     this.app = express();
 
-    this.routes();
     this.config();
+    this.routes();
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
@@ -26,6 +27,11 @@ class App {
   }
 
   private config():void {
+    this.app.use(cors({
+      // credentials: true,
+      origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    }));
+
     const accessControl: express.RequestHandler = (_req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
@@ -34,7 +40,6 @@ class App {
     };
 
     this.app.use(express.json());
-    
     this.app.use(accessControl);
   }
 
