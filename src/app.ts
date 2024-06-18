@@ -13,8 +13,8 @@ class App {
   constructor() {
     this.app = express();
 
-    this.config();
     this.routes();
+    this.config();
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
@@ -39,6 +39,7 @@ class App {
     };
 
     this.app.use(express.json());
+    
     this.app.use(accessControl);
   }
 
