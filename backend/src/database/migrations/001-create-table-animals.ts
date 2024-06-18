@@ -23,16 +23,24 @@ export default {
         allowNull: false,
       },
       yearOfBirth: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
+        field: 'year_of_birth',
+        validate: {
+          isInt: true,
+          min: 1990, // ano mínimo permitido
+          max: new Date().getFullYear() // ano máximo é o ano atual
+        }
       },
       availableForAdoption: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        field: 'available_for_adoption',
       },
       isAdopted: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        field: 'is_adopted',
       },
     })
   },
