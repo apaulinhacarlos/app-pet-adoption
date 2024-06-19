@@ -14,6 +14,20 @@ class AnimalsService {
     const animal = await this.model.getById(id);
     return animal;
   }
+
+  public async create(newAnimal: any) {
+    const animal = await this.model.create(newAnimal);
+    return animal;
+  }
+
+  public async update(id: number, newAnimal: any) {
+    const animal = await this.model.update(id, newAnimal);
+    return animal;
+  }
+
+  public async delete(id: number) {
+    await this.model.delete(id);
+  }
 }
 
 export default AnimalsService;

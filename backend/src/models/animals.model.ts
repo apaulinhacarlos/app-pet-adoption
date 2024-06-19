@@ -16,6 +16,21 @@ class AnimalsModel {
     const animal = await this.modelDatabase.findByPk(id);
     return animal;
   }
+
+  public async create(newAnimal: IAnimals): Promise<IAnimals> {
+    const animal = await this.modelDatabase.create(newAnimal);
+    return animal;
+  }
+
+  public async update(id: number, newAnimal: IAnimals): Promise<IAnimals | null> {
+    await this.modelDatabase.update(newAnimal, { where: { id } });
+    const animal = await this.modelDatabase.findByPk(id);
+    return animal;
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.modelDatabase.destroy({ where: { id } });
+  }
 }
 
 export default AnimalsModel;
