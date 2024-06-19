@@ -4,7 +4,7 @@
   "description": "backend do app de adocao pet",
   "main": "./build/server",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r ts-node/register ./src/tests/**/**/*.ts -t 10000 --exit",
     "predev": "npm run db:reset",
     "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts",
     "start": "ts-node ./src/server.ts",
@@ -14,24 +14,36 @@
   "author": "apaulinhacarlos",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
+    "cors": "2.8.5",
     "express": "4.19.2",
-    "express-async-errors": "^3.1.1",
+    "express-async-errors": "3.1.1",
     "mysql2": "3.10.1",
     "sequelize": "6.37.3"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
+    "@types/chai": "^4.3.16",
+    "@types/chai-http": "^4.2.0",
+    "@types/cors": "2.8.17",
     "@types/express": "4.17.21",
+    "@types/mocha": "^10.0.6",
     "@types/node": "20.14.5",
     "@types/sequelize": "4.28.20",
+    "@types/sinon": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "7.13.1",
+    "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "18.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-mocha": "^10.2.0",
+    "eslint-plugin-sonarjs": "^0.23.0",
+    "mocha": "^10.4.0",
     "nodemon": "3.1.3",
     "sequelize-cli": "6.6.2",
-    "ts-node": "10.9.2",
+    "sinon": "^18.0.0",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "2.0.0",
-    "typescript": "5.4.5"
+    "tsx": "^4.15.6",
+    "typescript": "^5.4.5"
   }
 }
