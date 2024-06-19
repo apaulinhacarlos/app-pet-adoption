@@ -27,4 +27,4 @@ export const animalsMock = [
   },
 ]
 
-export const animalMockFromDb = AnimalModelDatabase.bulkBuild(animalsMock);
+export const animalsMockFromDb = AnimalModelDatabase.bulkBuild(animalsMock);

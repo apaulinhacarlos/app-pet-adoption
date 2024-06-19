@@ -1,23 +1,22 @@
-// import chai from 'chai';
-// import sinon from 'sinon';
-// import chaiHttp from 'chai-http';
-// import { describe, it } from 'mocha';
-// import { Express } from 'express';
+import chai from 'chai'
+import sinon from 'sinon'
+import chaiHttp from 'chai-http'
 
-// import { app } from '../../app'; // Importa a instância do Express
-// import AnimalModelDatabase from '../../database/models/Animal';
-// import { animalMockFromDb } from '../mocks/animals.mock';
+import { app } from '../../app' // Importa a instância do Express
+import AnimalModelDatabase from '../../database/models/Animal'
+import { animalsMockFromDb, animalsMock } from '../mocks/animals.mock'
 
-// chai.use(chaiHttp);
-// const { expect } = chai;
+chai.use(chaiHttp)
+const { expect } = chai
 
-// describe('animals route', function () {
-//   it('should return all animals', async function () {
-//     sinon.stub(AnimalModelDatabase, 'findAll').resolves(animalMockFromDb);
+describe('animals route - integration test', function () {
+  it('should be called with status 200 and return all animals', async function () {
+    sinon.stub(AnimalModelDatabase, 'findAll').resolves(animalsMockFromDb)
 
-//     const apiResponse = await chai.request(app as Express).get('/animals');
+    const apiResponse = await chai.request(app).get('/animals')
 
-//     expect(apiResponse.status).to.equal(200);
-//     expect(apiResponse.body).to.be.an('array');
-//   });
-// });
+    expect(apiResponse.status).to.equal(200)
+    expect(apiResponse.body).to.deep.equal(animalsMock)
+
+  });
+});
