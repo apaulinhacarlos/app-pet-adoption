@@ -3,8 +3,8 @@ import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
 import { Request, Response } from 'express'
 
-import AnimalsController from '../../../controllers/animals.controller'
-import AnimalsService from '../../../services/animals.service'
+import AnimalsController from '../../../src/controllers/animals.controller'
+import AnimalsService from '../../../src/services/animals.service'
 import { animalsMockFromDb } from '../../mocks/animals.mock'
 
 const { expect } = chai

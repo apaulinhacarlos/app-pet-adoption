@@ -2,8 +2,8 @@ import chai from 'chai'
 import sinon from 'sinon'
 import chaiHttp from 'chai-http'
 
-import { app } from '../../app' // Importa a instância do Express
-import AnimalModelDatabase from '../../database/models/Animal'
+import { app } from '../../src/app' // Importa a instância do Express
+import AnimalModelDatabase from '../../src/database/models/Animal'
 import { animalsMockFromDb, animalsMock } from '../mocks/animals.mock'
 
 chai.use(chaiHttp)
@@ -20,3 +20,4 @@ describe('animals route - integration test', function () {
 
   });
 });
+

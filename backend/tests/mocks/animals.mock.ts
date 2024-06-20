@@ -1,4 +1,4 @@
-import AnimalModelDatabase from '../../database/models/Animal';
+import AnimalModelDatabase from '../../src/database/models/Animal';
 
 export const animalsMock = [
   {
