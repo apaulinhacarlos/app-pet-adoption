@@ -1,15 +1,13 @@
-FROM node:16.14-alpine
+FROM node:20-alpine
 
 WORKDIR /app-backend
 
-COPY package* ./ 
+COPY package*.json .
 
-EXPOSE 3001
-
-RUN npm install
+RUN npm clean-install
 
 COPY . . 
 
-ENTRYPOINT [ "npm", "run" ]
+EXPOSE 3001
 
-CMD ["start"]
+CMD [ "npm", "run", "start" ]
