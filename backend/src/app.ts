@@ -23,7 +23,7 @@ class App {
   }
 
   private routes(): void {
-    this.app.use('/animals', animalRouter);
+    this.app.use('/api/animals', animalRouter);
   }
 
   private config():void {

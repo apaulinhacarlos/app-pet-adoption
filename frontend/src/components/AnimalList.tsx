@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AnimalsCard from './animals.card';
+import AnimalsCard from './AnimalCard';
 import ApiContext from '../context/api.context';
 import { Row } from 'react-bootstrap';
 

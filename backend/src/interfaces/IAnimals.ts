@@ -5,8 +5,8 @@ interface IAnimals {
   gender: string,
   yearOfBirth: number,
   description: string,
-  image_url?: string,
-  video_url?: string,
+  imageUrl?: string,
+  videoUrl?: string,
   availableForAdoption: boolean,
   isAdopted: boolean,
 }

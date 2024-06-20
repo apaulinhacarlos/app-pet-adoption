@@ -36,12 +36,12 @@ export default {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      image_url: {
+      imageUrl: {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'image_url',
       },
-      video_url: {
+      videoUrl: {
         type: DataTypes.STRING,
         field: 'video_url',
       },

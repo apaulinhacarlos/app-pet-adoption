@@ -11,7 +11,7 @@ function ApiProvider({ children }: any) {
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     try {
-      const result = await requestData('/animals');
+      const result = await requestData('/api/animals');
       setData(result);
     } catch (error) {
       console.error('Error fetching data:', error);

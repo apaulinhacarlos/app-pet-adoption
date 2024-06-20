@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import ApiContext from '../context/api.context';
-import Animals from '../components/animals';
+import Animals from '../components/AnimalList';
 
 const App: React.FC = () => {
   const { isLoading } = useContext(ApiContext);
