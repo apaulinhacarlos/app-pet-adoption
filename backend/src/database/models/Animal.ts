@@ -74,7 +74,7 @@ AnimalModelDatabase.init({
     type: DataTypes.BOOLEAN,
     allowNull: false,
     field: 'is_adopted',
-  }
+  },
 }, {
   sequelize: sequelizeDatabase,
   tableName: 'animals',

@@ -8,5 +8,4 @@ apiRouter.use('/animals', animalRouter);
 apiRouter.use('/auth/login', authRouter);
 // apiRouter.use(authMiddleware);
 
-
 export default apiRouter;

@@ -50,7 +50,7 @@ SimpleUserModelDatabase.init({
 
 SimpleUserModelDatabase.belongsTo(RoleModelDatabase, {
   foreignKey: 'role_id',
-  as: 'role'
+  as: 'role',
 });
 
 export default SimpleUserModelDatabase;

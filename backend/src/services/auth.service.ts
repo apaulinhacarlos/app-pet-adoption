@@ -1,32 +1,36 @@
-import * as bcrypt from 'bcryptjs'
-import AuthModel from '../models/auth.model'
-import JWT from '../utils/jwt.utils'
+import * as bcrypt from 'bcryptjs';
+import AuthModel from '../models/auth.model';
+import JWT from '../utils/jwt.utils';
 
 class AuthService {
   constructor(
     private model: AuthModel = new AuthModel(),
-    private jwt = new JWT()
+    private jwt = new JWT(),
   ) {}
 
   private messageInvalidCredentials = {
     status: 'UNAUTHORIZED',
     data: { message: 'Invalid credentials' },
-  }
+  };
 
   public async login(email: string, password: string) {
-    const userFound = await this.model.login(email, password)
-    if (!userFound) return this.messageInvalidCredentials
+    const userFound = await this.model.login(email);
+    if (!userFound) return this.messageInvalidCredentials;
 
-    const userMatch = await bcrypt.compare(password, userFound.password)
-    if (!userMatch) return this.messageInvalidCredentials
+    const userMatch = await bcrypt.compare(password, userFound.password);
+    if (!userMatch) return this.messageInvalidCredentials;
 
-    const token = this.jwt.sign({ id: userFound.id, email: userFound.email, roleId: userFound.roleId})
+    const token = this.jwt.sign({
+      id: userFound.id,
+      email: userFound.email,
+      roleId: userFound.roleId,
+    });
 
     return {
       status: 'OK',
       data: { token },
-    }
+    };
   } 
 }
 
-export default AuthService
+export default AuthService;

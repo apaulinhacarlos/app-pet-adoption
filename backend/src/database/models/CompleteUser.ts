@@ -56,7 +56,7 @@ CompleteUserModelDatabase.init({
   phone: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
 }, {
   sequelize: sequelizeDatabase,
   tableName: 'complete_users',
@@ -66,12 +66,12 @@ CompleteUserModelDatabase.init({
 
 CompleteUserModelDatabase.belongsTo(SimpleUserModelDatabase, {
   foreignKey: 'user_simple_id',
-  as: 'user'
+  as: 'user',
 });
 
 CompleteUserModelDatabase.belongsTo(AddressModelDatabase, {
   foreignKey: 'address_id',
-  as: 'address'
+  as: 'address',
 });
 
 export default CompleteUserModelDatabase;

@@ -32,13 +32,6 @@ class App {
       origin: process.env.FRONTEND_URL || 'http://localhost:5173',
     }));
 
-    // const accessControl: express.RequestHandler = (_req, res, next) => {
-    //   res.header('Access-Control-Allow-Origin', '*');
-    //   res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
-    //   res.header('Access-Control-Allow-Headers', '*');
-    //   next();
-    // };
-
     const accessControl: express.RequestHandler = (req, res, next) => {
       res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL || 'http://localhost:5173'); // Specify the allowed origin
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');

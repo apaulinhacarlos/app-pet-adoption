@@ -6,8 +6,8 @@ interface IJWT {
 }
 
 export default class JWT implements IJWT {
-  private secret: Secret
-  private jwtConfig: SignOptions
+  private secret: Secret;
+  private jwtConfig: SignOptions;
 
   constructor() {
     this.secret = process.env.JWT_SECRET || 'secret';

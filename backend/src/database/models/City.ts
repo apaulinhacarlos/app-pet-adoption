@@ -45,7 +45,7 @@ CityModelDatabase.init({
 
 CityModelDatabase.belongsTo(StateModelDatabase, {
   foreignKey: 'state_id',
-  as: 'state'
+  as: 'state',
 });
 
 export default CityModelDatabase;

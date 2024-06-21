@@ -45,7 +45,7 @@ AddressModelDatabase.init({
 
 AddressModelDatabase.belongsTo(CityModelDatabase, {
   foreignKey: 'city_id',
-  as: 'city'
+  as: 'city',
 });
 
 export default AddressModelDatabase;

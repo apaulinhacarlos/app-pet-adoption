@@ -4,7 +4,7 @@ import AnimalsService from '../services/animals.service';
 
 class AnimalsController {
   constructor(
-    private service: AnimalsService = new AnimalsService()
+    private service: AnimalsService = new AnimalsService(),
   ) {}
 
   public async get(req: Request, res: Response): Promise<Response> {

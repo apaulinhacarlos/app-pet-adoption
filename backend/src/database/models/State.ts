@@ -45,7 +45,7 @@ StateModelDatabase.init({
 
 StateModelDatabase.belongsTo(CountryModelDatabase, {
   foreignKey: 'country_id',
-  as: 'country'
+  as: 'country',
 });
 
 export default StateModelDatabase;

@@ -1,15 +1,15 @@
-import AnimalsModel from "../models/animals.model";
+import AnimalsModel from '../models/animals.model';
 
 class AnimalsService {
   constructor(
-    private model: AnimalsModel = new AnimalsModel()
+    private model: AnimalsModel = new AnimalsModel(),
   ) {}
 
   public async get() {
     const animals = await this.model.get();
     return {
       status: 'OK',
-      data: animals
+      data: animals,
     };
   }
 
@@ -17,7 +17,7 @@ class AnimalsService {
     const animal = await this.model.getById(id);
     return {
       status: 'OK',
-      data: animal
+      data: animal,
     };
   }
 
@@ -25,7 +25,7 @@ class AnimalsService {
     const animal = await this.model.create(newAnimal);
     return {
       status: 'CREATED',
-      data: animal
+      data: animal,
     };
   }
 
@@ -33,7 +33,7 @@ class AnimalsService {
     const animal = await this.model.update(id, newAnimal);
     return {
       status: 'OK',
-      data: animal
+      data: animal,
     };
   }
 
@@ -41,7 +41,7 @@ class AnimalsService {
     await this.model.delete(id);
     return {
       status: 'NO_CONTENT',
-      data: null
+      data: null,
     };
   }
 }
