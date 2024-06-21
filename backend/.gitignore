@@ -5,3 +5,4 @@ node_modules.tar.gz
 *.http
 coverage
 .nyc_output
+.vscode
