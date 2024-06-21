@@ -6,17 +6,19 @@ import {
   CreationOptional,
 } from 'sequelize';
 
+import RoleModelDatabase from './Role';
+
 import sequelizeDatabase from '.';
 
-class UsersModelDatabase extends Model<InferAttributes<UsersModelDatabase>,
-InferCreationAttributes<UsersModelDatabase>> {
+class SimpleUserModelDatabase extends Model<InferAttributes<SimpleUserModelDatabase>,
+InferCreationAttributes<SimpleUserModelDatabase>> {
   declare id: CreationOptional<number>;
   declare email: CreationOptional<string>;
   declare password: CreationOptional<string>;
   declare roleId: CreationOptional<number>;
 }
 
-UsersModelDatabase.init({
+SimpleUserModelDatabase.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -34,6 +36,10 @@ UsersModelDatabase.init({
   roleId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: RoleModelDatabase,
+      key: 'id',
+    },
   },
 }, {
   sequelize: sequelizeDatabase,
@@ -42,4 +48,9 @@ UsersModelDatabase.init({
   underscored: true,
 });
 
-export default UsersModelDatabase;
+SimpleUserModelDatabase.belongsTo(RoleModelDatabase, {
+  foreignKey: 'role_id',
+  as: 'role'
+});
+
+export default SimpleUserModelDatabase;

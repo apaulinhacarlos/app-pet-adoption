@@ -25,9 +25,7 @@ export default {
         references: {
           model: 'roles',
           key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        }
       },
     })
   },
