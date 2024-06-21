@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 
-import animalRouter from './routes/animal.router';
+import apiRouter from './routes';
 
 // import errorMiddleware from './middlewares/errorMiddleware';
 
@@ -23,7 +23,7 @@ class App {
   }
 
   private routes(): void {
-    this.app.use('/api/animals', animalRouter);
+    this.app.use('/api', apiRouter);
   }
 
   private config():void {

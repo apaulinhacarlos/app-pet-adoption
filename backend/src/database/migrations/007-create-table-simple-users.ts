@@ -19,13 +19,14 @@ export default {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      role_id: {
+      roleId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'roles',
           key: 'id',
-        }
+        },
+        field: 'role_id',
       },
     })
   },
