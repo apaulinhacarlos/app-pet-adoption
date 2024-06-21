@@ -9,11 +9,12 @@
     "test": "mocha -r ts-node/register 'tests/**/*.ts'",
     "test:coverage": "nyc npm test",
     "test:total": "npm test && npm run test:coverage",
+    "build": "tsc", 
     "db:reset": "npx tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "predev": "npm run db:reset",
-    "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts",
-    "prestart": "npm run db:reset",
-    "start": "ts-node ./src/server.ts",
+    "predev": "npm run build && npm run db:reset",
+    "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts",   
+    "prestart": "npm run build && npm run db:reset",
+    "start": "node ./build/server.js",
     "lint": "eslint ./src --ext .ts"
   },
   "dependencies": {
