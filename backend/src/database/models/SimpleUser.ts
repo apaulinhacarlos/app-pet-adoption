@@ -40,6 +40,7 @@ SimpleUserModelDatabase.init({
       model: RoleModelDatabase,
       key: 'id',
     },
+    defaultValue: 2,
   },
 }, {
   sequelize: sequelizeDatabase,

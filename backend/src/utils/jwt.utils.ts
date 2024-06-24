@@ -5,7 +5,7 @@ interface IJWT {
   verify(token: string): JwtPayload
 }
 
-export default class JWT implements IJWT {
+class JWT implements IJWT {
   private secret: Secret;
   private jwtConfig: SignOptions;
 
@@ -34,3 +34,5 @@ export default class JWT implements IJWT {
     }
   }
 }
+
+export default JWT;

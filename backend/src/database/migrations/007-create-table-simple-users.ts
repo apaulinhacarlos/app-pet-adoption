@@ -27,6 +27,7 @@ export default {
           key: 'id',
         },
         field: 'role_id',
+        defaultValue: 2,
       },
     })
   },
