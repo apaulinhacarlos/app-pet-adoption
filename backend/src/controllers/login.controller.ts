@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import getHttpStatus from '../utils/http.map';
-import AuthService from '../services/auth.service';
+import LoginService from '../services/login.service';
 
-class AuthController {
+class LoginController {
   constructor(
-    private service: AuthService = new AuthService(),
+    private service: LoginService = new LoginService(),
   ) {}
 
   public async login(req: Request, res: Response): Promise<Response> {
@@ -14,4 +14,4 @@ class AuthController {
   }
 }
 
-export default AuthController;
+export default LoginController;

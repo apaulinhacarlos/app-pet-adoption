@@ -1,10 +1,10 @@
 import * as bcrypt from 'bcryptjs';
-import AuthModel from '../models/auth.model';
+import LoginModel from '../models/login.model';
 import JWT from '../utils/jwt.utils';
 
-class AuthService {
+class LoginService {
   constructor(
-    private model: AuthModel = new AuthModel(),
+    private model: LoginModel = new LoginModel(),
     private jwt = new JWT(),
   ) {}
 
@@ -33,4 +33,4 @@ class AuthService {
   } 
 }
 
-export default AuthService;
+export default LoginService;
