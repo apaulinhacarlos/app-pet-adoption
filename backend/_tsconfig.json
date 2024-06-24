@@ -2,12 +2,10 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "sourceMap": true,   
-    "outDir": "./build",
-    "rootDir": "./src",
+    "sourceMap": true,
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl": ".", 
+    "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
@@ -17,8 +15,12 @@
       "*": ["node_modules/*"]
     },
     "allowJs": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
-  "exclude": ["node_modules", "tests/**/*.ts"]
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.test.json" }
+  ]
 }

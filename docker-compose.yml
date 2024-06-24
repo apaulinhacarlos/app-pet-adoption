@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.1'
 services:
   database:
     container_name: database
@@ -31,6 +31,7 @@ services:
       - MYSQL_NAME=PET-ADOPTION
       - FRONTEND_URL=http://localhost:5173
       - FRONTEND_DOMAIN=localhost
+      - JWT_SECRET=jwt_secret
     volumes: 
       - ./backend/src:/app-backend/src
     depends_on:
