@@ -34,7 +34,7 @@ class AnimalsController {
   public async delete(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const result = await this.service.delete(Number(id));
-    return res.status(getHttpStatus(result.status)).send(result.data);
+    return res.status(getHttpStatus(result.status)).json(result.data);
   }
 }
 

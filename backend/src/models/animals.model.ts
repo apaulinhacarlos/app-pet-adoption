@@ -22,11 +22,8 @@ class AnimalsModel {
     return animal;
   }
 
-  public async update(id: number, newAnimal: IAnimals): Promise<IAnimals | null> {
+  public async update(id: number, newAnimal: IAnimals): Promise<void> {
     await this.modelDatabase.update(newAnimal, { where: { id } });
-    const animal = await this.modelDatabase.findByPk(id);
-        
-    return animal;
   }
 
   public async delete(id: number): Promise<void> {

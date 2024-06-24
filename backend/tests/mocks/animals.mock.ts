@@ -30,7 +30,7 @@ export const animalsMock = [
 export const animalsMockFromDb = AnimalModelDatabase.bulkBuild(animalsMock);
 
 export const newAnimalMock = {
-  "id": 3,
+  "id": 2,
   "name": "Clebinho",
   "specie": "cat",
   "gender": "male",
@@ -44,17 +44,19 @@ export const newAnimalMock = {
 
 export const newAnimalMockFromDB = AnimalModelDatabase.build(newAnimalMock);
 
-export const animalUpdatedMock = {
-  "id": 5,
-  "name": "Clebinho",
-  "specie": "cat",
-  "gender": "male",
-  "yearOfBirth": 2022,
-  "description": "Abeia é uma gata muito carinhosa e brincalhona. Ela adora brincar com bolinhas de papel e caixas de papelão.",
-  "imageUrl": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "videoUrl": "https://www.youtube.com/watch?v=J---aiyznGQ",
-  "availableForAdoption": true,
-  "isAdopted": false
-}
 
-export const animalUpdatedMockFromDB = AnimalModelDatabase.build(animalUpdatedMock);
+
+
+// export const animalUpdatedMock = {
+//   "name": "Clebinho",
+//   "specie": "cat",
+//   "gender": "male",
+//   "yearOfBirth": 2022,
+//   "description": "Abeia é uma gata muito carinhosa e brincalhona. Ela adora brincar com bolinhas de papel e caixas de papelão.",
+//   "imageUrl": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+//   "videoUrl": "https://www.youtube.com/watch?v=J---aiyznGQ",
+//   "availableForAdoption": true,
+//   "isAdopted": false
+// }
+
+// export const animalUpdatedMockFromDB = AnimalModelDatabase.build(animalUpdatedMock);

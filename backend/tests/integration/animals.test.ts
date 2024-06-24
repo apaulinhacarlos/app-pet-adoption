@@ -10,8 +10,6 @@ import {
   animalsMockFromDb,
   newAnimalMock,
   newAnimalMockFromDB,
-  animalUpdatedMock,
-  animalUpdatedMockFromDB
 } from '../mocks/animals.mock';
 
 chai.use(chaiHttp);
@@ -34,7 +32,13 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
     });
 
     it('should be called with status 404 and error message if no animals are found', async function () {
-      // not implemented
+      sinon.stub(AnimalModelDatabase, 'findAll').resolves([]);
+  
+      const apiResponse = await chai.request(app)
+        .get('/api/animals');
+  
+      expect(apiResponse.status).to.equal(404);
+      expect(apiResponse.body).to.deep.equal({ message: 'no animals found' });
     });
   });
 
@@ -50,20 +54,28 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
     });
 
     it('should be called with status 404 and error message if the animal is not found', async function () {
-      // not implemented
+      sinon.stub(AnimalModelDatabase, 'findByPk').resolves(null);
+  
+      const apiResponse = await chai.request(app)
+        .get('/api/animals/1');
+  
+      expect(apiResponse.status).to.equal(404);
+      expect(apiResponse.body).to.deep.equal({ message: 'animal not found' });
     });
   });
 
   describe('POST /api/animals', function () {
     it('should be called with status 201 and create a new animal', async function () {    
       sinon.stub(AnimalModelDatabase, 'create').resolves(newAnimalMockFromDB);
-  
+      
+      const { id, ...newAnimalMockWithoutId } = newAnimalMock;
+      
       const apiResponse = await chai.request(app)
         .post('/api/animals')
-        .send(newAnimalMock);
+        .send(newAnimalMockWithoutId);
   
       expect(apiResponse.status).to.equal(201);
-      expect(apiResponse.body).to.deep.equal(newAnimalMock);
+      expect(apiResponse.body).to.deep.equal({ message: 'animal created', animalId: 2 });
     });
 
     it('should be called with status 400 and error message if the request body is invalid', async function () {
@@ -75,24 +87,27 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
     it('should be called with status 200 and update the animal with the predefined id', async function () {
       sinon.restore();
       
+      sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
       sinon.stub(AnimalModelDatabase, 'update').resolves([ 1 ]);
-      sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalUpdatedMockFromDB);
   
+      const { id, ...newAnimalMockWithoutId } = newAnimalMock;
+
       const apiResponse = await chai.request(app)
-        .put('/api/animals/5')
-        .send(animalUpdatedMock);
+        .put('/api/animals/1')
+        .send(newAnimalMockWithoutId);
   
       expect(apiResponse.status).to.equal(200);
-      expect(apiResponse.body).to.deep.equal(animalUpdatedMock);
+      expect(apiResponse.body).to.deep.equal({ message: 'animal updated' });
     });
 
-    it('should be called with status 404 if the animal to update is not found', async function () {
+    it('should be called with status 400 and error message if the request body is invalid', async function () {
       // not implemented
-    });
+    }); 
   });
 
   describe('DELETE /api/animals/:id', function () {
     it('should be called with status 204 and delete the animal with the predefined id', async function () {    
+      sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
       sinon.stub(AnimalModelDatabase, 'destroy').resolves(1);
     
       const apiResponse = await chai.request(app)
@@ -100,10 +115,6 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
   
       expect(apiResponse.status).to.equal(204);
       expect(apiResponse.body).to.empty;
-    });
-  
-    it('should be called with status 404 if the animal to delete is not found', async function () {
-      // not implemented
     });
   });
 });

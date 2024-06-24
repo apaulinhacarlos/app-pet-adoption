@@ -3,8 +3,7 @@ import cors from 'cors';
 import 'express-async-errors';
 
 import apiRouter from './routes';
-
-// import errorMiddleware from './middlewares/errorMiddleware';
+import errorMiddleware from './middlewares/error.middleware';
 
 class App {
   public app: express.Express;
@@ -12,14 +11,13 @@ class App {
   constructor() {
     this.app = express();
 
-    this.config();
-    this.routes();
-
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
 
-    // middleware de erro - último a ser chamado
-    // this.app.use(errorMiddleware);
+    this.config();
+    this.routes();
+
+    this.app.use(errorMiddleware);
   }
 
   private routes(): void {

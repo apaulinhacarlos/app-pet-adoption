@@ -1,5 +1,5 @@
 interface IAnimals {
-  id: number,
+  id?: number,
   name: string,
   specie: string,
   gender: string,

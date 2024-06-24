@@ -6,6 +6,7 @@ import simpleRegisterRouter from './simple-register.router';
 const apiRouter = Router();
 
 apiRouter.use('/animals', animalRouter);
+
 apiRouter.use('/login', loginRouter);
 apiRouter.use('/simple-register', simpleRegisterRouter);
 

@@ -10,7 +10,7 @@ class LoginService {
 
   private messageInvalidCredentials = {
     status: 'UNAUTHORIZED',
-    data: { message: 'Invalid credentials' },
+    data: { message: 'invalid credentials' },
   };
 
   public async login(email: string, password: string) {
