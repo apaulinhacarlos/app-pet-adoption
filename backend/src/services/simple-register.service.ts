@@ -1,9 +1,11 @@
 import * as bcrypt from 'bcryptjs';
+import LoginModel from '../models/login.model';
 import SimpleRegisterModel from '../models/simple-register.model';
 import JWT from '../utils/jwt.utils';
 
 class SimpleRegisterService {
   constructor(
+    private modelLogin: LoginModel = new LoginModel(),
     private model: SimpleRegisterModel = new SimpleRegisterModel(),
     private jwt = new JWT(),
   ) {}
@@ -14,7 +16,7 @@ class SimpleRegisterService {
   };
 
   public async register(email: string, password: string) {
-    const userFound = await this.model.login(email);
+    const userFound = await this.modelLogin.login(email);
     if (userFound) return this.messageAlreadyRegistered;
 
     const hashPassword = await bcrypt.hash(password, 10);

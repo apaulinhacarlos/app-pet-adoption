@@ -13,7 +13,7 @@ describe('animals route - integration test', function () {
   it('should be called with status 200 and return all animals', async function () {
     sinon.stub(AnimalModelDatabase, 'findAll').resolves(animalsMockFromDb)
 
-    const apiResponse = await chai.request(app).get('/animals')
+    const apiResponse = await chai.request(app).get('/api/animals')
 
     expect(apiResponse.status).to.equal(200)
     expect(apiResponse.body).to.deep.equal(animalsMock)
