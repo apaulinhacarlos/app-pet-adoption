@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "backend do app de adocao pet",
   "main": "./build/server",
-  "author": "apaulinhacarlos",
+  "author": "https://github.com/apaulinhacarlos",
   "license": "ISC",
   "scripts": {
     "test": "mocha -r ts-node/register 'tests/**/*.ts'",

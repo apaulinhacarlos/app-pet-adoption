@@ -5,12 +5,12 @@ import IAnimals from '../interfaces/IAnimals';
 class AnimalsService {
   constructor(
     private model: AnimalsModel = new AnimalsModel(),
-  ) {};
+  ) {}
 
   public async get() {
     const animals = await this.model.get();
 
-    if(!animals.length) {
+    if (!animals.length) {
       throw new CustomError('NOT_FOUND', 'no animals found');
     }
 
@@ -18,20 +18,20 @@ class AnimalsService {
       status: 'OK',
       data: animals,
     };
-  };
+  }
 
   public async getById(id: number) {
     const animal = await this.model.getById(id);
 
     if (!animal) {
       throw new CustomError('NOT_FOUND', 'animal not found');
-    };
+    }
 
     return {
       status: 'OK',
       data: animal,
     };
-  };
+  }
 
   public async create(newAnimal: IAnimals) {
     const animal = await this.model.create(newAnimal);

@@ -1,6 +1,5 @@
 import { ModelStatic } from 'sequelize';
 import SimpleUserModelDatabase from '../database/models/SimpleUser';
-import ISimpleUsers from '../interfaces/ISimpleUsers';
 
 class SimpleRegisterModel {
   constructor(

@@ -1,0 +1,20 @@
+{
+  "name": "pet-adoption-app",
+  "version": "1.0.0",
+  "description": "app de adocao pet",
+  "main": "index.js",
+  "author": "https://github.com/apaulinhacarlos",
+  "keywords": [],
+  "license": "ISC",
+  "scripts": {
+    "install:front": "cd ./frontend && npm install",
+    "install:back": "cd ./backend && npm install",
+    "install:apps": "npm run install:front && npm run install:back",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down --remove-orphans",
+    "test:back": "npm run test --prefix backend",
+    "test:back:coverage": "npm run test:coverage --prefix backend",
+    "lint:front": "npm run lint --prefix frontend",
+    "lint:back": "npm run lint --prefix backend"
+  }
+}
