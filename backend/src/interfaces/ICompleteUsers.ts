@@ -1,9 +1,9 @@
 interface ICompleteUsers {
   id: number,
-  simple_user_id: number,
+  simpleUserId: number,
   name: string,
   cpf: string,
-  address_id: number,
+  addressId: number,
   phone: string,
 }
 

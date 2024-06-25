@@ -10,13 +10,14 @@ export default {
         autoIncrement: true,
         primaryKey: true,
       },
-      simple_user_id: {
+      simpleUserId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'simple_users',
           key: 'id'
-        }
+        },
+        field: 'simple_user_id'
       }, 
       name: {
         type: DataTypes.STRING,
@@ -27,13 +28,14 @@ export default {
         allowNull: false,
         unique: true
       },
-      address_id: {
+      addressId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'addresses',
           key: 'id'
-        }
+        },
+        field: 'address_id'
       },
       phone: {
         type: DataTypes.STRING,

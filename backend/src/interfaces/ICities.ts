@@ -1,7 +1,7 @@
 interface ICities {
   id: number,
   name: string,
-  state_id: number
+  stateId: number
 }
 
 export default ICities;

@@ -14,13 +14,14 @@ export default {
         type: DataTypes.STRING,
         allowNull: false
       },
-      country_id: {
+      countryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'countries',
           key: 'id'
-        }
+        },
+        field: 'country_id'
       }
     })
   },

@@ -14,13 +14,14 @@ export default {
         type: DataTypes.STRING,
         allowNull: false
       },
-      state_id: {
+      stateId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'states',
           key: 'id'
-        }
+        },
+        field: 'state_id'
       }
     })
   },

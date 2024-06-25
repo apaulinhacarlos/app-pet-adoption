@@ -1,7 +1,7 @@
 interface IStates {
   id: number,
   name: string,
-  country_id: number
+  countryId: number
 }
 
 export default IStates;

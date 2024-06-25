@@ -1,7 +1,7 @@
 interface IAddresses {
   id: number,
   name: string,
-  city_id: number
+  cityId: number
 }
 
 export default IAddresses;

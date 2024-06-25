@@ -26,8 +26,8 @@ export default {
           model: 'roles',
           key: 'id',
         },
-        field: 'role_id',
         defaultValue: 2,
+        field: 'role_id',
       },
     })
   },
