@@ -2,7 +2,8 @@ import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { Request, Response } from 'express';
-import { describe, afterEach, it } from 'node:test';
+// import { describe, afterEach, it } from 'node:test';
+import { describe, afterEach, it } from 'mocha';
 
 import AnimalsController from '../../../src/controllers/animals.controller';
 import AnimalsService from '../../../src/services/animals.service';

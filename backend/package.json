@@ -6,7 +6,7 @@
   "author": "https://github.com/apaulinhacarlos",
   "license": "ISC",
   "scripts": {
-    "test": "mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "mocha -r ts-node/register 'tests/**/*.ts' ",
     "test:coverage": "nyc npm test",
     "test:total": "npm test && npm run test:coverage",
     "build": "tsc",

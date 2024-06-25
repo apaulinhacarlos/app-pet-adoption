@@ -1,7 +1,9 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import chaiHttp from 'chai-http';
-import { describe, afterEach, it } from 'node:test';
+// import { describe, afterEach, it } from 'node:test';
+import { describe, afterEach, it } from 'mocha';
+
 
 import { app } from '../../src/app'; // Importa a instância do Express
 import AnimalModelDatabase from '../../src/database/models/Animal';
