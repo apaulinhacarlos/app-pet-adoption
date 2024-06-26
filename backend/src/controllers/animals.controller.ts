@@ -7,7 +7,7 @@ class AnimalsController {
     private service: AnimalsService = new AnimalsService(),
   ) {}
 
-  public async get(req: Request, res: Response): Promise<Response> {
+  public async get(_req: Request, res: Response): Promise<Response> {
     const animals = await this.service.get();
     return res.status(getHttpStatus(animals.status)).json(animals.data);
   }
