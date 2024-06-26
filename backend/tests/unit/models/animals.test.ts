@@ -3,27 +3,26 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { describe, afterEach, it } from 'mocha';
 
-import AnimalsService from '../../../src/services/animals.service';
 import { animalsMockFromDb, newAnimalMock, newAnimalMockFromDB } from '../../mocks/animals.mock';
 import AnimalModelDatabase from '../../../src/database/models/Animal';
+import AnimalsModel from '../../../src/models/animals.model';
 
 const { expect } = chai;
 chai.use(sinonChai);
 
-describe('ANIMALS SERVICE - UNIT TEST', () => {
+describe('ANIMALS MODEL - UNIT TEST', () => {
   afterEach(function () {
     sinon.restore();
   });
 
   describe('get', () => {
-    it('should be returned with status OK and data animals', async () => {
+    it('should be returned with all animals', async () => {
       sinon.stub(AnimalModelDatabase, 'findAll').resolves(animalsMockFromDb);
     
-      const animalsService = new AnimalsService();
-      const result = await animalsService.get();
+      const animalsModel = new AnimalsModel();
+      const result = await animalsModel.get();
 
-      expect(result.status).to.equal('OK');
-      expect(result.data).to.equal(animalsMockFromDb);
+      expect(result).to.equal(animalsMockFromDb);
     });
   });
 
@@ -31,11 +30,10 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
     it('should be returned with status OK and data with only the animal with the predefined id', async () => {
       sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
 
-      const animalsService = new AnimalsService();
-      const result = await animalsService.getById(1);
+      const animalsModel = new AnimalsModel();
+      const result = await animalsModel.getById(1);
 
-      expect(result.status).to.equal('OK');
-      expect(result.data).to.deep.equal(animalsMockFromDb[0]);
+      expect(result).to.deep.equal(animalsMockFromDb[0]);
     });
   });
 
@@ -45,11 +43,10 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
 
       const { id, ...newAnimalMockWithoutId } = newAnimalMock;
 
-      const animalsService = new AnimalsService();
-      const result = await animalsService.create(newAnimalMockWithoutId);
+      const animalsModel = new AnimalsModel();
+      const result = await animalsModel.create(newAnimalMockWithoutId);
 
-      expect(result.status).to.equal('CREATED');
-      expect(result.data).to.deep.equal({ message: 'animal created', animalId: 2 });
+      expect(result).to.deep.equal(newAnimalMockFromDB);
     });
   });
   
@@ -60,11 +57,10 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
 
       const { id, ...newAnimalMockWithoutId } = newAnimalMock;
 
-      const animalsService = new AnimalsService();
-      const result = await animalsService.update(1, newAnimalMockWithoutId);
+      const animalsModel = new AnimalsModel();
+      const result = await animalsModel.update(1, newAnimalMockWithoutId);
 
-      expect(result.status).to.equal('OK');
-      expect(result.data).to.deep.equal({ message: 'animal updated' });
+      expect(result).to.be.undefined;
     });
   });
 
@@ -73,11 +69,10 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
       sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
       sinon.stub(AnimalModelDatabase, 'destroy').resolves(1);
 
-      const animalsService = new AnimalsService();
-      const result = await animalsService.delete(1);
+      const animalsModel = new AnimalsModel();
+      const result = await animalsModel.delete(1);
 
-      expect(result.status).to.equal('NO_CONTENT');
-      expect(result.data).to.deep.equal({ message: 'animal deleted' });
+      expect(result).to.be.undefined;
     });
   });
 });
