@@ -25,6 +25,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "9.0.2",
     "mysql2": "3.10.1",
+    "pg": "^8.12.0",
     "sequelize": "6.37.3"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "@types/jsonwebtoken": "9.0.5",
     "@types/mocha": "^10.0.7",
     "@types/node": "20.14.5",
+    "@types/pg": "^8.11.6",
     "@types/sequelize": "4.28.20",
     "@types/sinon": "10.0.11",
     "@types/sinon-chai": "3.2.12",
