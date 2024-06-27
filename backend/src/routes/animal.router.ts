@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import AnimalsController from '../controllers/animals.controller';
-import ValidationAnimals from '../middlewares/validations.animals';
+import ValidationAnimals from '../middlewares/validations.animals.middleware';
 
 const animalRouter = Router();
 

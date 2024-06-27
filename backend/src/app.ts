@@ -46,10 +46,6 @@ class App {
   }
 }
 
-// export default App;
-
-// // Essa segunda exportação é estratégica, e a execução dos testes de cobertura depende dela
-// export const { app } = new App();
 
 const appInstance = new App().app; // Aqui você cria a instância do Express e exporta
 export { appInstance as app };
