@@ -6,4 +6,3 @@ node_modules.tar.gz
 coverage
 .nyc_output
 .vscode
-.vercel
