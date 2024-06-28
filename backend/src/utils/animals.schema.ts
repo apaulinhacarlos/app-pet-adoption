@@ -1,6 +1,7 @@
 import Joi from 'joi';
 
 export const animalsSchema = Joi.object({
+  user: Joi.object(),
   id: Joi.number(),
   name: Joi.string().min(2).required(),
   specie: Joi.string().min(3).required(),

@@ -1,8 +1,8 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import chaiHttp from 'chai-http';
-// import { describe, afterEach, it } from 'node:test';
 import { describe, afterEach, it } from 'mocha';
+import jwt from 'jsonwebtoken';
 
 
 import { app } from '../../src/app'; // Importa a instância do Express
@@ -70,10 +70,21 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
     it('should be called with status 201 and create a new animal', async function () {    
       sinon.stub(AnimalModelDatabase, 'create').resolves(newAnimalMockFromDB);
       
+      const payload = {
+        id: 1,
+        email: 'paula@example.com',
+        roleId: 1,
+        iat: 1719600713,
+        exp: 1720464713
+      }
+
+      sinon.stub(jwt, 'verify').callsFake(() => payload)
+
       const { id, ...newAnimalMockWithoutId } = newAnimalMock;
       
       const apiResponse = await chai.request(app)
         .post('/api/animals')
+        .set('Authorization', 'Bearer valid_token')
         .send(newAnimalMockWithoutId);
   
       expect(apiResponse.status).to.equal(201);
@@ -83,6 +94,33 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
     it('should be called with status 400 and error message if the request body is invalid', async function () {
       // not implemented
     });   
+
+    it('should be called with status 401 and error message if the token is invalid', async function () {
+      sinon.stub(AnimalModelDatabase, 'create').resolves(newAnimalMockFromDB);
+      
+      const { id, ...newAnimalMockWithoutId } = newAnimalMock;
+    
+      const apiResponse = await chai.request(app)
+        .post('/api/animals')
+        .set('Authorization', 'Bearer invalid_token')
+        .send(newAnimalMockWithoutId);
+    
+      expect(apiResponse.status).to.equal(401);
+      expect(apiResponse.body).to.deep.equal({ message: 'invalid credentials' });
+    });
+
+    it('should be called with status 401 and error message if the token is absent', async function () {
+      sinon.stub(AnimalModelDatabase, 'create').resolves(newAnimalMockFromDB);
+      
+      const { id, ...newAnimalMockWithoutId } = newAnimalMock;
+    
+      const apiResponse = await chai.request(app)
+        .post('/api/animals')
+        .send(newAnimalMockWithoutId);
+    
+      expect(apiResponse.status).to.equal(401);
+      expect(apiResponse.body).to.deep.equal({ message: 'invalid credentials' });
+    });
   });
 
   describe('PUT /api/animals/:id', function () {
@@ -92,10 +130,22 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
       sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
       sinon.stub(AnimalModelDatabase, 'update').resolves([ 1 ]);
   
+      const payload = {
+        id: 1,
+        email: 'paula@example.com',
+        roleId: 1,
+        iat: 1719600713,
+        exp: 1720464713
+      }
+
+      sinon.stub(jwt, 'verify').callsFake(() => payload)
+
+
       const { id, ...newAnimalMockWithoutId } = newAnimalMock;
 
       const apiResponse = await chai.request(app)
         .put('/api/animals/1')
+        .set('Authorization', 'valid_token')
         .send(newAnimalMockWithoutId);
   
       expect(apiResponse.status).to.equal(200);
@@ -112,8 +162,19 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
       sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
       sinon.stub(AnimalModelDatabase, 'destroy').resolves(1);
     
+      const payload = {
+        id: 1,
+        email: 'paula@example.com',
+        roleId: 1,
+        iat: 1719600713,
+        exp: 1720464713
+      }
+
+      sinon.stub(jwt, 'verify').callsFake(() => payload)
+
       const apiResponse = await chai.request(app)
-        .delete('/api/animals/1');
+      .delete('/api/animals/1')
+      .set('Authorization', 'valid_token');
   
       expect(apiResponse.status).to.equal(204);
       expect(apiResponse.body).to.empty;

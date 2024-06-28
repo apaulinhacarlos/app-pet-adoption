@@ -22,8 +22,6 @@ class JWT implements IJWT {
   }
 
   public verify(bearerToken: string): JwtPayload {
-    if (!bearerToken) throw new JsonWebTokenError('Token not found');
-
     const token = bearerToken.split(' ')[1];
 
     try {
