@@ -24,7 +24,7 @@ class App {
     this.app.use('/api', apiRouter);
   }
 
-  private config():void {
+  private config(): void {
     this.app.use(cors({
       credentials: true,
       origin: process.env.FRONTEND_URL || 'http://localhost:5173',
@@ -45,7 +45,6 @@ class App {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
   }
 }
-
 
 const appInstance = new App().app; // Aqui você cria a instância do Express e exporta
 export { appInstance as app };

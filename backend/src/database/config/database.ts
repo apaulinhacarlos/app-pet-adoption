@@ -12,7 +12,7 @@ const config: Options = {
     timezone: 'Z',
   },
   logging: false,
-}
+};
 
 // const config: Options = {
 //   username: process.env.POSTGRES_USER || 'root',
