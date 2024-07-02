@@ -15,12 +15,13 @@ function LoginForm() {
   const handleSubmit = async (formEvent: React.FormEvent) => {
     formEvent.preventDefault();
     const response = await login(email, password)
+    
     if(response.status === 'OK') {
       // await verifyAuth();
       navigate('/');
-    } else {
-      setError(response.message ?? 'Usuário ou senha inválido')
     }
+    
+    setError('Usuário ou senha inválido')
   }
   
   const handleEmailChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {

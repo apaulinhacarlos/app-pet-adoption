@@ -17,17 +17,22 @@ export const requestData = async (path: string) => {
 
 export const login = async (email: string, password: string) => {
   try {
-    await api.post('/api/login', {
+    const result = await api.post('/api/login', {
       email,
       password
     })
-
-    return { status: 'OK' }
+    
+    const token = result.data;
+    
+    return { status: 'OK', message: token }
   } catch (err) {
-    if(isAxiosError(err) && err.status === 401) {
-      return { status: 'UNAUTHORIZED', message: err.message }
+    if(isAxiosError(err)) {
+      return {
+        status: 'UNAUTHORIZED',
+        message: err.response
+      }
     }
-    return { status: 'UNAUTHORIZED', message: "Erro desconhecido" }
+    return { status: 'INTERNAL_SERVER_ERROR', message: "Erro desconhecido" }
   }
 }
 
