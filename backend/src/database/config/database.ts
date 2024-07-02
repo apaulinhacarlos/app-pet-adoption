@@ -1,5 +1,5 @@
 import { Options } from 'sequelize';
-import pg from 'pg';
+// import pg from 'pg';
 
 const config: Options = {
   username: process.env.MYSQL_USER || 'root',

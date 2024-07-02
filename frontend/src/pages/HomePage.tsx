@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import ApiContext from '../context/api.context';
 import Animals from '../components/AnimalList';
 
-const App: React.FC = () => {
+const HomePage: React.FC = () => {
   const { isLoading } = useContext(ApiContext);
   
   if (isLoading) {
@@ -24,4 +24,4 @@ const App: React.FC = () => {
   ); 
 };
 
-export default App;
+export default HomePage;
