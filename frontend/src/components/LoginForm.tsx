@@ -3,6 +3,8 @@ import { useMemo, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { login } from '../services/api.service';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
+
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -21,7 +23,7 @@ function LoginForm() {
       navigate('/');
     }
     
-    setError('Usuário ou senha inválido')
+    setError('E-mail ou senha inválido')
   }
   
   const handleEmailChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +55,11 @@ function LoginForm() {
   return (
     
     <div>
-      {error && <p>{error}</p>}
+      {error && 
+        <Alert key='error' variant='danger'>
+          { error }
+        </Alert>
+      }
 
       <Form onSubmit={ handleSubmit }>
 
