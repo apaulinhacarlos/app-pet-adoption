@@ -24,7 +24,7 @@ class AnimalsService {
     const animal = await this.model.getById(id);
 
     if (!animal) {
-      throw new CustomError('NOT_FOUND', 'animal not found');
+      throw new CustomError('NOT_FOUND', 'no animals found');
     }
 
     return {

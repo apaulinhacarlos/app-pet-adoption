@@ -62,7 +62,7 @@ describe('ANIMALS ROUTE - INTEGRATION TEST', function () {
         .get('/api/animals/1');
   
       expect(apiResponse.status).to.equal(404);
-      expect(apiResponse.body).to.deep.equal({ message: 'animal not found' });
+      expect(apiResponse.body).to.deep.equal({ message: 'no animals found' });
     });
   });
 
