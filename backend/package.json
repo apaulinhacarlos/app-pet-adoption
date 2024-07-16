@@ -25,7 +25,8 @@
     "joi": "17.13.3",
     "jsonwebtoken": "9.0.2",
     "mysql2": "3.10.1",
-    "sequelize": "6.37.3"
+    "sequelize": "6.37.3",
+    "swagger-ui-express": "5.0.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.6",
@@ -39,6 +40,7 @@
     "@types/sequelize": "4.28.20",
     "@types/sinon": "10.0.11",
     "@types/sinon-chai": "3.2.12",
+    "@types/swagger-ui-express": "4.1.6",
     "@typescript-eslint/eslint-plugin": "6.14.0",
     "chai": "4.3.6",
     "chai-http": "4.3.0",
