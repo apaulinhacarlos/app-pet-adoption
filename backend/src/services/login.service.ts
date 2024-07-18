@@ -17,7 +17,7 @@ class LoginService {
     const userFound = await this.model.login(email);
     if (!userFound) return this.messageInvalidCredentials;
 
-    const userMatch = await bcrypt.compare(password, userFound.password);
+    const userMatch = bcrypt.compareSync(password, userFound.password);
     if (!userMatch) return this.messageInvalidCredentials;
 
     const token = this.jwt.sign({
