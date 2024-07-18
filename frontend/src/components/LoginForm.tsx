@@ -18,7 +18,7 @@ function LoginForm() {
     formEvent.preventDefault();
     const response = await login(email, password)
     
-    if(response.status === 'OK') {
+    if(response.status === 'SUCCESS') {
       // await verifyAuth();
       navigate('/');
     }

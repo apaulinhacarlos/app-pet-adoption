@@ -23,7 +23,7 @@ describe('ANIMALS CONTROLLER - UNIT TEST', () => {
 
       const animalsService = new AnimalsService();
       sinon.stub(animalsService, 'get').resolves({
-        status: 'OK',
+        status: 'SUCCESS',
         data: animalsMockFromDb
       });
     
@@ -47,7 +47,7 @@ describe('ANIMALS CONTROLLER - UNIT TEST', () => {
 
       const animalsService = new AnimalsService();
       sinon.stub(animalsService, 'getById').resolves({
-        status: 'OK',
+        status: 'SUCCESS',
         data: animalsMockFromDb[0]
       });
     
@@ -99,7 +99,7 @@ describe('ANIMALS CONTROLLER - UNIT TEST', () => {
 
       const animalsService = new AnimalsService();
       sinon.stub(animalsService, 'update').resolves({
-        status: 'OK',
+        status: 'SUCCESS',
         data: { message: 'animal updated' }
       });
     

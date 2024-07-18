@@ -27,7 +27,7 @@ class LoginService {
     });
 
     return {
-      status: 'OK',
+      status: 'SUCCESS',
       data: { token },
     };
   } 

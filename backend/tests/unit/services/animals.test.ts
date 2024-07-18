@@ -16,25 +16,25 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
   });
 
   describe('get', () => {
-    it('should be returned with status OK and data animals', async () => {
+    it('should be returned with status SUCCESS and data animals', async () => {
       sinon.stub(AnimalModelDatabase, 'findAll').resolves(animalsMockFromDb);
     
       const animalsService = new AnimalsService();
       const result = await animalsService.get();
 
-      expect(result.status).to.equal('OK');
+      expect(result.status).to.equal('SUCCESS');
       expect(result.data).to.equal(animalsMockFromDb);
     });
   });
 
   describe('getById', () => {
-    it('should be returned with status OK and data with only the animal with the predefined id', async () => {
+    it('should be returned with status SUCCESS and data with only the animal with the predefined id', async () => {
       sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
 
       const animalsService = new AnimalsService();
       const result = await animalsService.getById(1);
 
-      expect(result.status).to.equal('OK');
+      expect(result.status).to.equal('SUCCESS');
       expect(result.data).to.deep.equal(animalsMockFromDb[0]);
     });
   });
@@ -54,7 +54,7 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
   });
   
   describe('update', () => {
-    it('should be returned with status OK and data { message: animal updated }', async () => {
+    it('should be returned with status SUCCESS and data { message: animal updated }', async () => {
       sinon.stub(AnimalModelDatabase, 'findByPk').resolves(animalsMockFromDb[0]);
       sinon.stub(AnimalModelDatabase, 'update').resolves([ 1 ]);
 
@@ -63,7 +63,7 @@ describe('ANIMALS SERVICE - UNIT TEST', () => {
       const animalsService = new AnimalsService();
       const result = await animalsService.update(1, newAnimalMockWithoutId);
 
-      expect(result.status).to.equal('OK');
+      expect(result.status).to.equal('SUCCESS');
       expect(result.data).to.deep.equal({ message: 'animal updated' });
     });
   });

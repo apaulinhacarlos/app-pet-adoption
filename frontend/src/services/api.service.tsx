@@ -24,7 +24,7 @@ export const login = async (email: string, password: string) => {
     
     const token = result.data;
     
-    return { status: 'OK', message: token }
+    return { status: 'SUCCESS', message: token }
   } catch (err) {
     if(isAxiosError(err)) {
       return {

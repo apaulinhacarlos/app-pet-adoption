@@ -15,7 +15,7 @@ class AnimalsService {
     }
 
     return {
-      status: 'OK',
+      status: 'SUCCESS',
       data: animals,
     };
   }
@@ -28,7 +28,7 @@ class AnimalsService {
     }
 
     return {
-      status: 'OK',
+      status: 'SUCCESS',
       data: animal,
     };
   }
@@ -48,7 +48,7 @@ class AnimalsService {
     await this.model.update(id, newAnimal);
         
     return {
-      status: 'OK',
+      status: 'SUCCESS',
       data: { message: 'animal updated' },
     };
   }
