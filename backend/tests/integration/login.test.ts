@@ -25,12 +25,11 @@ describe('LOGIN ROUTE - INTEGRATION TEST', () => {
       const apiResponse = await chai.request(app)
         .post('/api/login')
         .send({
-          email: 'example@example.com',
+          email: 'user@example.com',
           password: 'password',
         });
   
       expect(apiResponse.status).to.equal(200);
-      expect(apiResponse.body).to.have.property('token');
       expect(apiResponse.body).to.deep.equal({ token: 'valid_token' });
     });
   
@@ -41,12 +40,11 @@ describe('LOGIN ROUTE - INTEGRATION TEST', () => {
       const apiResponse = await chai.request(app)
         .post('/api/login')
         .send({
-          email: 'example@example.com',
+          email: 'user@example.com',
           password: 'wrongpassword',
         });
   
       expect(apiResponse.status).to.equal(401);
-      expect(apiResponse.body).to.have.property('message');
       expect(apiResponse.body).to.deep.equal({ message: 'invalid credentials' });
     });
     
@@ -54,12 +52,11 @@ describe('LOGIN ROUTE - INTEGRATION TEST', () => {
       const apiResponse = await chai.request(app)
         .post('/api/login')
         .send({
-          email: 'example@example.com',
+          email: 'wronguser@example.com',
           password: 'wrongpassword',
         });
   
       expect(apiResponse.status).to.equal(401);
-      expect(apiResponse.body).to.have.property('message');
       expect(apiResponse.body).to.deep.equal({ message: 'invalid credentials' });
     });
   });
