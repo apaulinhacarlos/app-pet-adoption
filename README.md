@@ -12,13 +12,15 @@ Este projeto está atualmente em desenvolvimento e ainda não está completo. Es
 
 O projeto está sendo desenvolvido usando as seguintes tecnologias:
 
-- **Frontend**: React.js, Vite e TypeScript
 - **Backend**: Node.js, Express.js e TypeScript
 - **Banco de Dados**: MySQL e Sequelize
+- **Frontend**: React.js, Vite e TypeScript
 - **Armazenamento de Imagens e Vídeos**: AWS S3
 - **Deploy:** A definir
-- **Outras tecnologias:** BcryptJs, JsonWebToken, Multer, entre outras.
+- **Segurança:** BcryptJs e JsonWebToken
+- **Uploads**: Multer
 - **Documentação:** Swagger
+- **Futuro Desenvolvimento:** Implementação de microsserviços utilizando outras linguagens
 
 ## Contribuição
 
